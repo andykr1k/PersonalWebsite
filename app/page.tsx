@@ -3,40 +3,55 @@ import { getPosts } from '@/lib/posts'
 import { formatDate, site } from '@/lib/site'
 
 const pinned = [
-  { title: 'Resume', href: '/Resume.pdf' },
   { title: 'Publications', href: '/publications' },
   { title: 'Projects', href: '/projects' },
+  { title: 'Resume', href: '/Resume.pdf' },
 ]
+
+function Row({ href, title, date }: { href: string; title: string; date: string }) {
+  return (
+    <li>
+      <Link href={href}>
+        <div className="post-item">
+          <p className="title">{title}</p>
+          <div className="divider" />
+          <p className="date">{date}</p>
+        </div>
+      </Link>
+    </li>
+  )
+}
 
 export default function Home() {
   const posts = getPosts()
   return (
     <>
-      <h1 className="text-2xl font-semibold">
-        {site.name} <span className="text-[var(--muted)]">/</span>
-      </h1>
-      <p className="mt-6">
-        I am a PhD student in Robotics and AI at the University of Michigan. I like research and
-        development, especially robotics, artificial intelligence and machine learning.
-      </p>
-      <p className="mt-4">
-        Contact: <a href={`mailto:${site.email}`}>{site.email}</a> ·{' '}
-        <a href={site.github}>GitHub</a> · <a href={site.linkedin}>LinkedIn</a> ·{' '}
-        <a href={site.twitter}>Twitter</a>
-      </p>
-
-      <ul className="mt-10 space-y-2">
+      <div className="about prose">
+        <p>
+          I&rsquo;m a <strong>PhD student</strong> in <strong>robotics</strong> and <strong>AI</strong>{' '}
+          at the University of Michigan. You can check out some of my projects on{' '}
+          <a href={site.github}>
+            <strong>GitHub</strong>
+          </a>
+          .
+        </p>
+        <p>
+          I&rsquo;m interested in robotics, artificial intelligence, and machine learning. I enjoy
+          research and development, especially building systems that learn.
+        </p>
+        <p>
+          Contact me at{' '}
+          <strong>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </strong>
+        </p>
+      </div>
+      <ul className="post-list">
         {pinned.map((p) => (
-          <li key={p.href} className="flex justify-between gap-4">
-            <Link href={p.href}>{p.title}</Link>
-            <span className="text-[var(--muted)]">Pinned</span>
-          </li>
+          <Row key={p.href} href={p.href} title={p.title} date="Pinned" />
         ))}
         {posts.map((p) => (
-          <li key={p.slug} className="flex justify-between gap-4">
-            <Link href={`/blog/${p.slug}`}>{p.title}</Link>
-            <span className="shrink-0 text-[var(--muted)]">{formatDate(p.date)}</span>
-          </li>
+          <Row key={p.slug} href={`/blog/${p.slug}`} title={p.title} date={formatDate(p.date)} />
         ))}
       </ul>
     </>

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPosts } from '@/lib/posts'
@@ -22,10 +21,11 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   if (!post) notFound()
   return (
     <article>
-      <Link href="/">&larr; Back</Link>
-      <h1 className="mt-6 text-2xl font-semibold">{post.title}</h1>
-      <p className="text-[var(--muted)]">{formatDate(post.date)}</p>
-      <div className="prose mt-6">
+      <div className="post-title">
+        <h1>{post.title}</h1>
+        <p>{formatDate(post.date)}</p>
+      </div>
+      <div className="prose">
         <MDXRemote source={post.content} />
       </div>
     </article>

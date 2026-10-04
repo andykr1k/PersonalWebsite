@@ -28,17 +28,31 @@ export default function Home() {
       <div className="about prose">
         <p>
           I&rsquo;m a <strong>PhD student</strong> in <strong>robotics</strong> and <strong>AI</strong>{' '}
-          at the University of Michigan. You can check out some of my projects on{' '}
+          at the University of Michigan, advised by <strong>Dr. Jason Corso</strong>. You can check out some of my projects on{' '}
           <a href={site.github}>
             <strong>GitHub</strong>
           </a>
+          , and my papers on{' '}
+          <a href={site.scholar}>
+            <strong>Google Scholar</strong>
+          </a>
           .
+        </p>
+        <p>
+          My research focuses on <strong>agents</strong> and <strong>world models</strong> for
+          robotics: learning predictive models of the physical world and using them to plan, reason,
+          and act reliably in unstructured environments.
         </p>
         <p>
           Contact me at{' '}
           <strong>
             <a href={`mailto:${site.email}`}>{site.email}</a>
-          </strong>
+          </strong>{' '}
+          or on{' '}
+          <a href={site.linkedin}>
+            <strong>LinkedIn</strong>
+          </a>
+          .
         </p>
       </div>
       <ul className="post-list">

@@ -4,7 +4,6 @@ import { formatDate, site } from '@/lib/site'
 
 const pinned = [
   { title: 'Publications', href: '/publications' },
-  { title: 'Projects', href: '/projects' },
   { title: 'Resume', href: '/Resume.pdf' },
 ]
 
@@ -34,10 +33,6 @@ export default function Home() {
             <strong>GitHub</strong>
           </a>
           .
-        </p>
-        <p>
-          I&rsquo;m interested in robotics, artificial intelligence, and machine learning. I enjoy
-          research and development, especially building systems that learn.
         </p>
         <p>
           Contact me at{' '}

@@ -7,4 +7,4 @@ npm install
 npm run dev
 ```
 
-Posts live in `content/posts`, projects and publications in `content/`.
+Posts live in `content/posts`, publications in `content/`.
